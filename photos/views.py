@@ -8,4 +8,5 @@ class ImagesListView(ListView):
 
 
 class ImageDetailView(DetailView):
+    context_object_name = 'image'
     model = TemporaryImage
