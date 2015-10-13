@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.views.generic import DetailView, ListView
 
-# Create your views here.
+from photos.models import TemporaryImage
+
+
+class ImagesListView(ListView):
+    model = TemporaryImage
+
+
+class ImageDetailView(DetailView):
+    model = TemporaryImage
