@@ -8,3 +8,6 @@ __pycache__/
 
 # Local Dev Database
 db.sqlite3
+
+# Amazon Credentials
+amazon-rc.sh
