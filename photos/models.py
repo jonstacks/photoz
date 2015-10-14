@@ -14,3 +14,6 @@ class TemporaryImage(models.Model):
     updated_dt = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to=calculate_path)
     ttl = models.DurationField()
+
+    def __str__(self):
+        return str(self.id)
