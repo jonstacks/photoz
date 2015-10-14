@@ -18,9 +18,10 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from photos.views import ImageDetailView
+from photos.views import ImageDetailView, ImageListView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^images/(?P<pk>[\w-]+)/', ImageDetailView.as_view()),
+    url(r'', ImageListView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

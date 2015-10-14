@@ -1,1 +1,7 @@
-<img scr="{{image.image.url}}">
+{% extends "photos/base.html" %}
+
+{% block content %}
+<div class="row">
+  <img class="img-responseive" scr="{{image.image.url}}" >
+</div>
+{% endblock %}
