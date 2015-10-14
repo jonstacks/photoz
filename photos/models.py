@@ -7,7 +7,7 @@ def calculate_path(instance, filename):
 
 class TemporaryImage(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_dt = models.DateTimeField(auto_now_add=True)
+    updated_dt = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to=calculate_path)
     ttl = models.DurationField()
