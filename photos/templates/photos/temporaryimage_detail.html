@@ -1,7 +1,20 @@
 {% extends "photos/base.html" %}
 
 {% block content %}
+{% with image=image.image %}
 <div class="row">
-  <img class="img-responseive" scr="{{image.image.url}}" >
+  <div class="col-md-12">
+    <div class="well">
+      {{ image.url }}
+    </div>
+  </div>
 </div>
+<div class="row">
+  <div class="col-md-12 portfolio-item">
+    <a href="#" class="thumbnail">
+      <img class="img-responsive" src="{{ image.url }}" alt="">
+    </a>
+  </div>
+</div>
+{% endwith %}
 {% endblock %}

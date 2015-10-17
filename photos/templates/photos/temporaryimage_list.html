@@ -4,7 +4,7 @@
 <div class="row">
   {% for image in images %}
     <div class="col-md-3 portfolio-item">
-      <a href="#" class="thumbnail">
+      <a href="{% url 'image-detail' image.id %}" class="thumbnail">
         <img class="img-responsive" src="{{ image.image.url }}" alt="">
       </a>
     </div>
