@@ -22,6 +22,7 @@ from photos.views import ImageDetailView, ImageListView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^images/(?P<pk>[\w-]+)/', ImageDetailView.as_view()),
-    url(r'', ImageListView.as_view()),
+    url(r'^images/(?P<pk>[\w-]+)/', ImageDetailView.as_view(),
+        name='image-detail'),
+    url(r'', ImageListView.as_view(), name='image-list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
