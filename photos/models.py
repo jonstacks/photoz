@@ -1,10 +1,11 @@
+import os
 import uuid
 from datetime import timedelta
 
 from django.db import models
 
 def calculate_path(instance, filename):
-    return "temp_images/{}".format(instance.id)
+    return "temp_images/{}{}".format(instance.id, instance.extension)
 
 class TemporaryImage(models.Model):
     class Meta:
@@ -28,3 +29,8 @@ class TemporaryImage(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    @property
+    def extension(self):
+        name, ext = os.path.splitext(self.image.name)
+        return ext
