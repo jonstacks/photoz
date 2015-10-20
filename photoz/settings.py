@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import boto.s3.connection
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -102,7 +103,13 @@ USE_TZ = True
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_HOST = os.environ.get('AWS_S3_HOST', 's3.amazonaws.com')
+
+AWS_HEADERS = {
+    'content-disposition': 'inline',
+}
+AWS_S3_CALLING_FORMAT = boto.s3.connection.OrdinaryCallingFormat()
+AWS_S3_CUSTOM_DOMAIN = '%s/%s' % (AWS_S3_HOST, AWS_STORAGE_BUCKET_NAME)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
