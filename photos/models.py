@@ -25,7 +25,8 @@ class TemporaryImage(models.Model):
     created_dt = models.DateTimeField(auto_now_add=True)
     updated_dt = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to=calculate_path)
-    ttl = models.DurationField(choices=TTL_CHOICES, default=DAY)
+    ttl = models.DurationField(choices=TTL_CHOICES, default=DAY,
+                               verbose_name="time to live")
 
     def __str__(self):
         return str(self.id)
