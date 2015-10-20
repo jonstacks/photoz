@@ -50,5 +50,5 @@ class Command(BaseCommand):
                 key.version_id,
             ])
 
-        print table
+        self.stdout.write(str(table))
 
