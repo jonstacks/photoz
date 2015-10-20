@@ -40,6 +40,8 @@ class Command(BaseCommand):
         table = PrettyTable([
             "Key", "Last Modified", "Size (KB)", "Version ID"
         ])
+        table.align["Key"] = "l"
+        table.align["Size (KB)"] = "r"
         for key in bucket.list():
             table.add_row([
                 key.name,
