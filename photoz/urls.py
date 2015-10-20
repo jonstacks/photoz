@@ -18,10 +18,11 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
 
-from photos.views import ImageDetailView, ImageListView
+from photos.views import ImageDetailView, ImageListView, ImageCreateView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^images/create/', ImageCreateView.as_view(), name='image-create'),
     url(r'^images/(?P<pk>[\w-]+)/', ImageDetailView.as_view(),
         name='image-detail'),
     url(r'', ImageListView.as_view(), name='image-list'),

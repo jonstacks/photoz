@@ -30,6 +30,10 @@ class TemporaryImage(models.Model):
     def __str__(self):
         return str(self.id)
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('image-detail', args=[self.id])
+
     @property
     def extension(self):
         name, ext = os.path.splitext(self.image.name)

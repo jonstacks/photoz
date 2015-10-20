@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
   {% for image in images %}
-    <div class="col-md-3 portfolio-item">
+    <div class="col-xs-6 col-md-3 portfolio-item">
       <a href="{% url 'image-detail' image.id %}" class="thumbnail">
         <img class="img-responsive" src="{{ image.image.url }}" alt="">
       </a>
