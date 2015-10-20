@@ -4,7 +4,7 @@
 {% with image=image.image %}
 <div class="row">
   <div class="col-md-12">
-    <input value={{ image.url }} readonly="readonly">
+    <input value={{ image.url }} readonly="readonly" onClick="this.select();">
   </div>
 </div>
 <div class="row">
