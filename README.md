@@ -18,6 +18,10 @@ temporary image service.
 
     python manage.py createsuperuser
 
+### Create your cloud bucket.
+
+    python manage.py create_bucket
+
 ### Copy static files to the cloud!
 
 The following command will copy your static files to s3 so that they will be
@@ -27,7 +31,15 @@ served up from the "cloud" allowing the photoz app to do other things instead.
 
 ## Configuration
 
+If you are running this project locally, and not from a docker container,
+you will need to make sure the following environment variables get set:
 
+* AWS_STORAGE_BUCKET_NAME
+* AWS_ACCESS_KEY_ID
+* AWS_SECRET_ACCESS_KEY
+
+You can also mess around with the [settings.py](photoz/settings.py) file
+to change the configuration to your liking.
 
 ## Deployment
 
@@ -38,6 +50,9 @@ you need to do is set the following environment variables:
 * AWS_STORAGE_BUCKET_NAME
 * AWS_ACCESS_KEY_ID
 * AWS_SECRET_ACCESS_KEY
+
+Optionally, you can also set the `AWS_S3_HOST` environment variable if you
+are storing your data in some place otehr than `s3.amazonaws.com`.
 
 And connect it up to a `postgres` database container. See the
 [docker-compose.yml](docker-compose.yml) file for an example.
