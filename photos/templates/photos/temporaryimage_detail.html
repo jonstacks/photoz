@@ -4,9 +4,7 @@
 {% with image=image.image %}
 <div class="row">
   <div class="col-md-12">
-    <div class="well">
-      {{ image.url }}
-    </div>
+    <input val={{ image.url }} readonly="readonly">{{ image.url }}</input>
   </div>
 </div>
 <div class="row">
