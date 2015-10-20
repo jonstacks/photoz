@@ -3,6 +3,7 @@ import uuid
 from datetime import timedelta
 
 from django.db import models
+from django.utils import timezone
 
 def calculate_path(instance, filename):
     return "temp_images/{}{}".format(instance.id, instance.extension)
@@ -34,6 +35,10 @@ class TemporaryImage(models.Model):
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
         return reverse('image-detail', args=[self.id])
+
+    def not_expired(self):
+        return True if timezone.now() < self.created_dt + self.ttl else False
+    not_expired.boolean = True
 
     @property
     def extension(self):

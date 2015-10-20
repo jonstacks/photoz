@@ -43,6 +43,17 @@ to change the configuration to your liking.
 
 ## Deployment
 
+Deploy this project as you would any other django project. If you want the
+images to get cleaned up on a periodic basis, you might want to set a cron
+job for the cleaup job:
+
+   python manage.py remove_expired
+
+The cleanup job will remove expired data from the database and remove the
+corresponding images in S3.
+
+### Docker
+
 Deployment with [Docker](https://www.docker.com/) is easy! This project comes
 with a [Dockerfile](Dockerfile) so you can easily build and deploy it. All
 you need to do is set the following environment variables:
