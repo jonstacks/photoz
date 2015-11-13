@@ -1,13 +1,35 @@
 {% extends "photos/base.html" %}
+{% load staticfiles %}
 
 {% block content %}
 <div class="row">
+  <div class="grid">
   {% for image in images %}
-    <div class="col-xs-6 col-md-3 portfolio-item">
-      <a href="{% url 'image-detail' image.id %}" class="thumbnail">
-        <img class="img-responsive" src="{{ image.image.url }}" alt="">
-      </a>
-    </div>
+  <div class="col-md-3 col-sm-4 portfolio-item grid-item">
+    <a href="{% url 'image-detail' image.id %}" class="thumbnail">
+      <img src="{{ image.image.url }}">
+    </a>
+  </div>
   {% endfor %}
+  </div>
 </div>
+{% endblock %}
+
+{# Include masonry for our images #}
+{% block extra_js %}
+  <script src="{% static "photos/js/imagesloaded.pkgd.min.js" %}"></script>
+  <script src="{% static "photos/js/masonry.pkgd.min.js" %}"></script>
+  <script>
+    // external js: masonry.pkgd.js, imagesloaded.pkgd.js
+    $(document).ready( function() {
+      var $grid = $('.grid').imagesLoaded( function() {
+        // init Masonry after all images have loaded
+        $grid.masonry({
+          itemSelector: '.grid-item',
+          columnWidth: '.grid-item',
+          percentPosition: true
+        }); 
+      });
+    });
+  </script>
 {% endblock %}
