@@ -37,10 +37,14 @@ class TemporaryImage(models.Model):
         return reverse('image-detail', args=[self.id])
 
     def not_expired(self):
-        return True if timezone.now() < self.created_dt + self.ttl else False
+        return True if timezone.now() < self.expires_at else False
     not_expired.boolean = True
 
     @property
     def extension(self):
         name, ext = os.path.splitext(self.image.name)
         return ext
+
+    @property
+    def expires_at(self):
+        return self.created_dt + self.ttl
