@@ -6,5 +6,5 @@ from photos.models import TemporaryImage
 @admin.register(TemporaryImage)
 class TemporaryImageAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_dt'
-    list_display = ('__str__', 'created_dt', 'not_expired')
+    list_display = ('__str__', 'created_dt', 'ttl', 'not_expired')
     readonly_fields = ('created_dt', 'updated_dt')
